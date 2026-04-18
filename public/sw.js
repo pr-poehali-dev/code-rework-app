@@ -1,4 +1,4 @@
-const CACHE = 'ezhev-v1';
+const CACHE = 'ezhev-v3';
 const ASSETS = ['/', '/src/main.tsx'];
 
 self.addEventListener('install', e => {
