@@ -1,0 +1,21 @@
+{
+  "name": "Ежедневник",
+  "short_name": "Ежедневник",
+  "description": "Минималистичный ежедневник с задачами, календарём и напоминаниями",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "orientation": "portrait",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": []
+}
