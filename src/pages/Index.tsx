@@ -350,7 +350,7 @@ function TasksView({ tasks, setTasks, isDark, showToast, onTaskClick }: {
         </div>
         <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
           {(['high', 'mid', 'low'] as Priority[]).map(p => (
-            <button key={p} onClick={() => setPriority(p)} style={{
+            <button type="button" key={p} onClick={() => setPriority(p)} style={{
               padding: '4px 10px', borderRadius: 20,
               border: `1.5px solid ${priority === p ? PRIORITY_COLORS[p] : 'transparent'}`,
               background: priority === p ? PRIORITY_BG[p] : (isDark ? '#222' : '#f4f4f4'),
@@ -360,7 +360,7 @@ function TasksView({ tasks, setTasks, isDark, showToast, onTaskClick }: {
               {PRIORITY_LABELS[p]}
             </button>
           ))}
-          <button onClick={add} style={{
+          <button type="button" onClick={add} style={{
             marginLeft: 'auto', background: isDark ? '#fff' : 'var(--app-ink)',
             color: isDark ? '#000' : '#fff',
             border: 'none', borderRadius: 10, padding: '6px 14px',
@@ -420,7 +420,7 @@ function TasksView({ tasks, setTasks, isDark, showToast, onTaskClick }: {
                 </div>
                 <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
                   {(['high', 'mid', 'low'] as Priority[]).map(p => (
-                    <button key={p} onClick={() => setEditPriority(p)} style={{
+                    <button type="button" key={p} onClick={() => setEditPriority(p)} style={{
                       padding: '3px 8px', borderRadius: 20,
                       border: `1.5px solid ${editPriority === p ? PRIORITY_COLORS[p] : 'transparent'}`,
                       background: editPriority === p ? PRIORITY_BG[p] : 'transparent',
@@ -430,12 +430,12 @@ function TasksView({ tasks, setTasks, isDark, showToast, onTaskClick }: {
                   ))}
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
-                  <button onClick={saveEdit} style={{
+                  <button type="button" onClick={saveEdit} style={{
                     flex: 1, background: isDark ? '#fff' : 'var(--app-ink)', color: isDark ? '#000' : '#fff',
                     border: 'none', borderRadius: 8, padding: '7px', fontSize: 13, fontWeight: 600,
                     cursor: 'pointer', fontFamily: 'inherit',
                   }}>Сохранить</button>
-                  <button onClick={() => setEditId(null)} style={{
+                  <button type="button" onClick={() => setEditId(null)} style={{
                     flex: 1, background: isDark ? '#222' : '#eee', color: 'var(--app-muted)',
                     border: 'none', borderRadius: 8, padding: '7px', fontSize: 13, fontWeight: 500,
                     cursor: 'pointer', fontFamily: 'inherit',
@@ -769,7 +769,7 @@ function CalendarView({ tasks, setTasks, calDate, setCalDate, isDark, startMonda
                               fontFamily: 'inherit', outline: 'none',
                             }} />
                             {(['high', 'mid', 'low'] as Priority[]).map(p => (
-                              <button key={p} onClick={() => setNewTaskPriority(p)} style={{
+                              <button type="button" key={p} onClick={() => setNewTaskPriority(p)} style={{
                                 padding: '2px 8px', borderRadius: 20,
                                 border: `1.5px solid ${newTaskPriority === p ? PRIORITY_COLORS[p] : 'transparent'}`,
                                 background: newTaskPriority === p ? PRIORITY_BG[p] : 'transparent',
@@ -779,13 +779,13 @@ function CalendarView({ tasks, setTasks, calDate, setCalDate, isDark, startMonda
                             ))}
                           </div>
                           <div style={{ display: 'flex', gap: 6 }}>
-                            <button onClick={() => addTaskForDate(iso)} style={{
+                            <button type="button" onClick={() => addTaskForDate(iso)} style={{
                               flex: 1, background: isDark ? '#fff' : 'var(--app-ink)',
                               color: isDark ? '#000' : '#fff',
                               border: 'none', borderRadius: 7, padding: '6px',
                               fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
                             }}>Добавить</button>
-                            <button onClick={() => { setAddingForDate(null); setNewTaskText(''); }} style={{
+                            <button type="button" onClick={() => { setAddingForDate(null); setNewTaskText(''); }} style={{
                               flex: 1, background: isDark ? '#2a2a2a' : '#eee',
                               border: 'none', borderRadius: 7, padding: '6px',
                               fontSize: 12, color: 'var(--app-muted)', cursor: 'pointer', fontFamily: 'inherit',
