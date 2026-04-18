@@ -228,7 +228,7 @@ export default function Index() {
             {activeTask.taskDate && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--app-muted)', fontSize: 13 }}>
                 <Icon name="Calendar" size={14} />
-                <span>{new Date(activeTask.taskDate).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' })}</span>
+                <span>{(() => { const [,m,d] = activeTask.taskDate!.split('-'); return `${d} ${['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'][+m-1]}`; })()}</span>
                 {activeTask.taskTime && <><Icon name="Clock" size={14} /><span>{activeTask.taskTime}</span></>}
               </div>
             )}
@@ -474,8 +474,8 @@ function TasksView({ tasks, setTasks, isDark, showToast, onTaskClick }: {
                     {task.taskDate && (
                       <span style={{ fontSize: 11, color: 'var(--app-muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
                         <Icon name="Calendar" size={10} />
-                        {new Date(task.taskDate).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}
-                        {task.taskTime && ` ${task.taskTime}`}
+                        {(() => { const [y,m,d] = task.taskDate!.split('-'); return `${d} ${['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'][+m-1]}`; })()}
+                        {task.taskTime && <><Icon name="Clock" size={10} />{task.taskTime}</>}
                       </span>
                     )}
                   </div>
@@ -725,7 +725,16 @@ function CalendarView({ tasks, setTasks, calDate, setCalDate, isDark, startMonda
                         }}>
                           {DAYS_RU_FULL[day.getDay()]}, {day.getDate()} {MONTHS_RU[day.getMonth()]}
                         </span>
-                        <button onClick={() => setAddingForDate(addingForDate === iso ? null : iso)} style={{
+                        <button onClick={() => {
+                          if (addingForDate === iso) {
+                            setAddingForDate(null);
+                          } else {
+                            setNewTaskText('');
+                            setNewTaskTime('');
+                            setNewTaskPriority('mid');
+                            setAddingForDate(iso);
+                          }
+                        }} style={{
                           background: 'none', border: 'none', cursor: 'pointer',
                           color: 'var(--app-blue)', padding: 2,
                         }}>
